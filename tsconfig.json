@@ -1,12 +1,14 @@
 {
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
-    "strict": true,
-    "paths": {
-      "@/*": [
-        "./*"
-      ]
-    }
+    "strict": false,
+    "jsx": "react-native",
+    "moduleResolution": "bundler",
+    "module": "esnext",
+    "types": [
+      "nativewind/types"
+    ],
+    "skipLibCheck": true
   },
   "include": [
     "**/*.ts",
