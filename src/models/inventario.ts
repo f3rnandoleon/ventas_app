@@ -32,7 +32,7 @@ export interface Inventario {
 export interface InventarioView {
   _id: string;
 
-  producto: {
+  productoId: {
     _id: string;
     nombre: string;
     modelo?: string;

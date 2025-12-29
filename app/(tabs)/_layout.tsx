@@ -40,6 +40,12 @@ export default function TabsLayout() {
           ),
         }}
       />
+      <Tabs.Screen
+        name="(stack)"
+        options={{
+          href: null,        // 👈 ESTO LO OCULTA
+        }}
+      />
     </Tabs>
   );
 }
