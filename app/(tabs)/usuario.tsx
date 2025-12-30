@@ -5,7 +5,7 @@ import {
   StyleSheet,
   Alert,
 } from "react-native";
-import { useRouter } from "expo-router";
+import { Stack, useRouter } from "expo-router";
 import { logout, getUser } from "../../src/utils/auth";
 import { useEffect, useState } from "react";
 import { Usuario } from "../../src/models/usuario";
@@ -19,6 +19,7 @@ export default function UsuarioScreen() {
   }, []);
 
   const handleLogout = () => {
+    
     Alert.alert(
       "Cerrar sesión",
       "¿Deseas cerrar sesión?",
@@ -38,6 +39,14 @@ export default function UsuarioScreen() {
 
   return (
     <View style={styles.container}>
+      <Stack.Screen
+        options={{
+          title: "Usuario",
+          headerShown: true,
+          headerStyle: { backgroundColor: "#3A8DFF" },
+          headerTintColor: "#fff",
+        }}
+      />
       <View style={styles.card}>
         <Text style={styles.name}>{user?.fullname}</Text>
         <Text style={styles.email}>{user?.email}</Text>

@@ -9,7 +9,7 @@ import {
   StyleSheet,
   FlatList,
 } from "react-native";
-import { useLocalSearchParams ,useRouter} from "expo-router";
+import { Stack, useLocalSearchParams ,useRouter} from "expo-router";
 import { useEffect, useState } from "react";
 import { Alert } from "react-native";
 import { getProductoByCodigo } from "../../src/services/producto.service";
@@ -120,13 +120,17 @@ const aumentarCantidad = (index: number) => {
 
   return (
     <View style={styles.container}>
-      {/* HEADER */}
-      <View style={{ flexDirection: "row", alignItems: "center", marginBottom: 12 }}>
-        <Text style={styles.title}>Venta rápida</Text>
-        <View style={{ marginLeft: 12 }}>
-          <NetworkBadge />
-        </View>
-      </View>
+      <Stack.Screen
+        options={{
+          title: "Ventas",
+          headerShown: true,
+          headerStyle: { backgroundColor: "#3A8DFF"},
+          headerTintColor: "#fff",
+          headerRight:()=> (<View style={{marginRight:15}}><NetworkBadge /></View>),
+        }}
+        
+      />
+      
 
       {/* BOTÓN ESCANEAR */}
       <Pressable

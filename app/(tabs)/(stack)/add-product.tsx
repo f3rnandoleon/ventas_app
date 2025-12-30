@@ -7,7 +7,6 @@ import {
   playSuccessFeedback,
   playWarningFeedback,
 } from "../../../src/utils/feedback";
-import { Stack } from "expo-router";
 
 export default function AddProductScreen() {
   const router = useRouter();
@@ -64,18 +63,7 @@ export default function AddProductScreen() {
 
   return (
     <View style={styles.container}>
-      <Stack.Screen
-        options={{
-          title: "Agregar producto",
-          headerLeft: () => (
-            <Pressable onPress={() => router.replace("/(tabs)/venta")}>
-              <Text style={{ color: "#fff",fontSize:30, }}>↩</Text>
-            </Pressable>
-          ),
-        }}
-      />
-
-
+      
 
       <TextInput
         style={styles.input}

@@ -2,7 +2,6 @@ import { View, Text, StyleSheet, Pressable } from "react-native";
 import { CameraView, useCameraPermissions } from "expo-camera";
 import { useRouter } from "expo-router";
 import { useRef,useState } from "react";
-import { Stack } from "expo-router";
 import { getProductoByCodigo } from "../../../src/services/producto.service";
 import { useVentaStore } from "../../../src/store/venta.store";
 import {
@@ -102,23 +101,8 @@ export default function ScannerScreen() {
     }, 2000);
   };
 
-
-
-
   return (
     <View style={styles.container}>
-        <Stack.Screen
-          options={{
-            title: "Escanear producto",
-            headerLeft: () => (
-              <Pressable onPress={() => router.replace("/(tabs)/venta")}>
-                <Text style={{ color: "#fff", fontSize:30 }}>↩</Text>
-              </Pressable>
-            ),
-          }}
-        />
-
-
 
       <Pressable
         style={StyleSheet.absoluteFillObject}

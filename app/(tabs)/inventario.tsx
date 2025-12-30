@@ -1,6 +1,6 @@
 import { View, Text, FlatList, StyleSheet, ScrollView,Pressable } from "react-native";
 import { useEffect, useState } from "react";
-import { useRouter } from "expo-router";
+import { Stack, useRouter } from "expo-router";
 import { getInventario } from "../../src/services/inventario.service";
 import type { InventarioView } from "../../src/models/inventario";
 import InventarioItemCard from "../../components/Inventario/InventarioItemCard";
@@ -105,7 +105,14 @@ export default function InventarioScreen() {
 
   return (
     <ScrollView style={styles.container} contentContainerStyle={{ padding: 16 }}>
-      
+      <Stack.Screen
+        options={{
+          title: "Inventario",
+          headerShown: true,
+          headerStyle: { backgroundColor: "#3A8DFF" },
+          headerTintColor: "#fff",
+        }}
+      />
         
       {/* 1️⃣ RESUMEN KPI */}
       <InventarioResumen items={movimientos} />
@@ -140,9 +147,21 @@ export default function InventarioScreen() {
               </Pressable>
 
               {abierto &&
-                prod.variantes.map((v, idx) => (
-                  
-                  <View key={idx} style={styles.variantRow}>
+              prod.variantes.map((v, idx) => (
+                <Pressable
+                  key={idx}
+                  onPress={() =>
+                    router.push({
+                      pathname: "/(tabs)/(inventario)/[productoId]",
+                      params: {
+                        productoId: prod.productoId,
+                        color: v.color,
+                        talla: v.talla,
+                      },
+                    })
+                  }
+                >
+                  <View style={styles.variantRow}>
                     <Text>
                       {v.color} · {v.talla}
                     </Text>
@@ -161,7 +180,9 @@ export default function InventarioScreen() {
                       {v.stock}
                     </Text>
                   </View>
-                ))}
+                </Pressable>
+              ))}
+
             </View>
           );
         })}

@@ -43,7 +43,13 @@ export default function TabsLayout() {
       <Tabs.Screen
         name="(stack)"
         options={{
-          href: null,        // 👈 ESTO LO OCULTA
+          href: null,       
+        }}
+      />
+      <Tabs.Screen
+        name="(inventario)"
+        options={{
+          href: null,       
         }}
       />
     </Tabs>
